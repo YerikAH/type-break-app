@@ -1,0 +1,26 @@
+@import url("./root.css");
+
+.text-completed {
+  color: var(--lettertext);
+  text-align: justify;
+  padding: 5rem 1rem;
+}
+.box-all {
+  position: fixed;
+  width: 100vw;
+  display: grid;
+  place-items: center;
+  left: 0;
+}
+.box-all_text {
+  max-width: 900px;
+
+  padding: 5rem 1rem;
+}
+.logo {
+  color: var(--letter);
+}
+.ul-nav {
+  justify-content: space-between;
+  padding: 2rem 1rem 0;
+}

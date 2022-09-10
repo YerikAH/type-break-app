@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@300;400;500;600;700&display=swap");
+:root {
+  --bgfont: #121212;
+  --letter: #e4e4e4;
+  --lettertext: #333333;
+  --fontmono: "Overpass Mono", monospace;
+}
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: var(--fontmono);
+}
+.button-config {
+  background: transparent;
+  border: none;
+  outline: none;
+}
+.flex {
+  display: flex;
+  width: 100%;
+}
+.letter-ai {
+  font-weight: 700;
+  font-size: calc(1.5rem + 1.5vw);
+}
+html {
+  background-color: var(--bgfont);
+  height: 100vh;
+  overflow: hidden;
+}
+main,
+header {
+  justify-content: center;
+  align-items: center;
+}
+section,
+nav {
+  max-width: 900px;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  background-color: var(--bgfont);
+  height: 20vh;
+}

@@ -4,13 +4,34 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/style.css" />
     <title>typebreak</title>
   </head>
   <body>
-    <h1>typbreak</h1>
-    <p id="count"></p>
-    <p id="textFollow"></p>
-    <input type="text" id="inputWrite" />
+    <header class="flex">
+      <nav class="flex">
+        <ul class="flex ul-nav">
+          <h1 class="logo"><img src="./assets/logo.svg" alt="" /> typbreak</h1>
+          <button class="button-config">
+            <img src="./assets/icon.svg" alt="" />
+          </button>
+        </ul>
+      </nav>
+    </header>
+    <main class="flex">
+      <section class="flex">
+        <p id="count"></p>
+        <p id="textFollow" class="text-completed letter-ai"></p>
+        <div class="box-all">
+          <input
+            type="text"
+            id="inputWrite"
+            class="box-all_text letter-ai flex button-config"
+          />
+        </div>
+      </section>
+    </main>
+    <footer></footer>
     <script src="./src/index.js"></script>
   </body>
 </html>
