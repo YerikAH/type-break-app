@@ -1,8 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@300;400;500;600;700&display=swap");
 :root {
   --bgfont: #121212;
-  --letter: #e4e4e4;
-  --lettertext: #333333;
+  --letter: #dbe3e3;
+  --lettertext: #5c5c5c;
+  --check: #478bc9;
+  --error: #ae515e;
   --fontmono: "Overpass Mono", monospace;
 }
 *,
@@ -12,6 +14,10 @@
   margin: 0;
   box-sizing: border-box;
   font-family: var(--fontmono);
+}
+button,
+a {
+  cursor: pointer;
 }
 .button-config {
   background: transparent;
