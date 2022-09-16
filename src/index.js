@@ -28,9 +28,12 @@ const $colorTwo = document.getElementById("colorTwo");
 const $colorThree = document.getElementById("colorThree");
 const $colorFour = document.getElementById("colorFour");
 const $colorFive = document.getElementById("colorFive");
-
+/* input range font size */
+const $letterSize = document.getElementById("letterSize");
+const $letterSizeShow = document.getElementById("letterSizeShow");
 let fontFamily = "font";
 let colorSelect = "theme";
+let fontSize = "sizefont";
 let textoVar;
 let myArr;
 let condition = false;
@@ -135,6 +138,10 @@ document.addEventListener("click", (e) => {
     fontSettings(e);
     colorSettings(e);
   }
+  if (e.target.type === "range") {
+    console.log("f");
+    changeSize(e);
+  }
 });
 /* get localstorage */
 document.addEventListener("DOMContentLoaded", (e) => {
@@ -146,6 +153,9 @@ document.addEventListener("DOMContentLoaded", (e) => {
     colorSettings(localStorage.getItem(colorSelect));
   } else return;
 
+  if (localStorage.getItem(fontSize)) {
+    changeSize(localStorage.getItem(fontSize));
+  } else return;
   $inputWrite.value = "";
 });
 
@@ -208,6 +218,61 @@ function colorSettings(arg) {
     } else return;
   }
 }
+function changeSize(arg) {
+  let varTemp;
+  if (arg.length === undefined) {
+    varTemp = arg.target.value;
+  } else {
+    varTemp = localStorage.getItem(fontSize);
+    console.log(localStorage.getItem(fontSize));
+  }
+  $letterSizeShow.textContent = varTemp;
+  switch (varTemp) {
+    case "1":
+      s.setProperty("--size", "calc(0.3rem + 1.5vw)");
+      localStorage.setItem(fontSize, "1");
+      break;
+    case "2":
+      s.setProperty("--size", "calc(0.4rem + 1.5vw)");
+      localStorage.setItem(fontSize, "2");
+      break;
+    case "3":
+      s.setProperty("--size", "calc(0.5rem + 1.5vw)");
+      localStorage.setItem(fontSize, "3");
+      break;
+    case "4":
+      s.setProperty("--size", "calc(0.6rem + 1.5vw)");
+      localStorage.setItem(fontSize, "4");
+      break;
+    case "5":
+      s.setProperty("--size", "calc(0.7rem + 1.5vw)");
+      localStorage.setItem(fontSize, "5");
+      break;
+    case "6":
+      s.setProperty("--size", "calc(0.8rem + 1.5vw)");
+      localStorage.setItem(fontSize, "6");
+      break;
+    case "7":
+      s.setProperty("--size", "calc(0.9rem + 1.5vw)");
+      localStorage.setItem(fontSize, "7");
+      break;
+    case "8":
+      s.setProperty("--size", "calc(1rem + 1.5vw)");
+      localStorage.setItem(fontSize, "8");
+      break;
+    case "9":
+      s.setProperty("--size", "calc(1.2rem + 1.5vw)");
+      localStorage.setItem(fontSize, "9");
+      break;
+    case "10":
+      s.setProperty("--size", "calc(1.5rem + 1.5vw)");
+      localStorage.setItem(fontSize, "10");
+      break;
+    default:
+      break;
+  }
+}
+
 /* functions for color */
 function colorConfig(a, b, c, d, e) {
   $colorOne.style.fill = a;

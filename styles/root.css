@@ -6,6 +6,7 @@
   --lettertext: #5c5c5c;
   --check: #478bc9;
   --error: #ae515e;
+  --size: calc(1.5rem + 1.5vw);
   --fontmono: "Overpass Mono", monospace;
 }
 *,
@@ -37,7 +38,7 @@ a {
 }
 .letter-ai {
   font-weight: 700;
-  font-size: calc(1.5rem + 1.5vw);
+  font-size: var(--size);
 }
 html {
   height: 100vh;
