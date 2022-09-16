@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bgTheme">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -8,11 +8,86 @@
     <title>typebreak</title>
   </head>
   <body>
-    <div class="customModal"></div>
+    <div class="custom-modal vw100" id="customModal">
+      <div class="modal-settings bgTheme">
+        <!--Ojo el boton lo cambiar por una imagen.-->
+        <button id="closeModalCustom">Cerrar modal</button>
+        <h4>Cambiar fuente</h4>
+        <div class="font-bg">
+          <button value="overpass">Overpass mono</button>
+          <button value="fira">Fira code</button>
+          <button value="ptmono">PT Mono</button>
+          <button value="jetbrains">JetBrains Mono</button>
+          <button value="space">Space Mono</button>
+          <button value="share">Share Tech Mono</button>
+        </div>
+        <h4>Cambiar color</h4>
+        <div class="bg-color">
+          <button value="azure">Azure</button>
+          <button value="ayu">Ayu</button>
+          <button value="dracula">Dracula</button>
+          <button value="monokai">Monokai</button>
+          <button value="onedark">One Dark</button>
+          <button value="cobalt">Cobalt</button>
+        </div>
+        <h4>Elegir tamaño de letra</h4>
+        <input type="range" />
+        <h4>Modo de dificultad</h4>
+      </div>
+    </div>
     <header class="flex">
       <nav class="flex">
         <ul class="flex ul-nav">
-          <h1 class="logo"><img src="./assets/logo.svg" alt="" /> typbreak</h1>
+          <h1 class="logo">
+            <svg
+              width="39"
+              height="28"
+              viewBox="0 0 39 28"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                width="37"
+                height="4"
+                rx="0.5"
+                fill="#ABD4F2"
+                id="colorOne"
+              />
+              <rect
+                y="6"
+                width="31"
+                height="4"
+                rx="0.5"
+                fill="#3F96C7"
+                id="colorTwo"
+              />
+              <rect
+                y="12"
+                width="39"
+                height="4"
+                rx="0.5"
+                fill="#478BC9"
+                id="colorThree"
+              />
+              <rect
+                y="24"
+                width="39"
+                height="4"
+                rx="0.5"
+                fill="#464646"
+                id="colorFour"
+              />
+              <rect
+                y="18"
+                width="31"
+                height="4"
+                rx="0.5"
+                fill="#8F8F8F"
+                id="colorFive"
+              />
+            </svg>
+            typebreak
+          </h1>
           <button class="button-config button-custom" id="customApp">
             <img src="./assets/icon.svg" alt="" />
           </button>
@@ -21,9 +96,8 @@
     </header>
     <main class="flex">
       <section class="flex">
-        <p id="count"></p>
         <p id="textFollow" class="text-completed letter-ai"></p>
-        <div class="box-all">
+        <div class="box-all vw100">
           <input
             type="text"
             id="inputWrite"
@@ -32,7 +106,7 @@
         </div>
       </section>
     </main>
-    <footer></footer>
+    <footer class="vw100 bgTheme"></footer>
     <script src="./src/index.js"></script>
   </body>
 </html>

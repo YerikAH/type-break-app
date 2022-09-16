@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&family=PT+Mono&family=Share+Tech+Mono&family=Space+Mono:wght@400;700&display=swap");
 :root {
   --bgfont: #121212;
   --letter: #dbe3e3;
@@ -19,6 +20,12 @@ button,
 a {
   cursor: pointer;
 }
+.bgTheme {
+  background-color: var(--bgfont);
+}
+.vw100 {
+  width: 100vw;
+}
 .button-config {
   background: transparent;
   border: none;
@@ -33,7 +40,6 @@ a {
   font-size: calc(1.5rem + 1.5vw);
 }
 html {
-  background-color: var(--bgfont);
   height: 100vh;
   overflow: hidden;
 }
@@ -47,10 +53,7 @@ nav {
   max-width: 900px;
 }
 footer {
-  position: absolute;
   bottom: 0;
-  left: 0;
-  width: 100vw;
-  background-color: var(--bgfont);
+  position: absolute;
   height: 20vh;
 }
