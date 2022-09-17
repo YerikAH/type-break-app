@@ -31,6 +31,8 @@ const $colorFive = document.getElementById("colorFive");
 /* input range font size */
 const $letterSize = document.getElementById("letterSize");
 const $letterSizeShow = document.getElementById("letterSizeShow");
+/* button reset */
+const $buttonReset = document.getElementById("buttonReset");
 let fontFamily = "font";
 let colorSelect = "theme";
 let fontSize = "sizefont";
@@ -66,6 +68,17 @@ $inputWrite.addEventListener("keydown", (e) => {
       console.log(second);
     }, 1000);
   }
+
+  if (condition && e.key == " ") {
+    $inputWrite.value = "";
+    if (myArr.length == 0) {
+      clearInterval(timer);
+      calcppm();
+      $inputWrite.setAttribute("disabled", "true");
+    }
+  }
+
+  shortcuts(e);
 });
 $inputWrite.addEventListener("keyup", (e) => {
   if (condition && e.key == " ") {
@@ -83,10 +96,10 @@ $inputWrite.addEventListener("keyup", (e) => {
     $inputWrite.style.color = "var(--error)";
   }
 });
-getText();
 async function getText() {
   try {
-    let res = await fetch("../data/data.json");
+    let url = "../data/data.json";
+    let res = await fetch(url);
     let json = await res.json();
     if (!res.ok) throw { status: res.status, statusText: res.statusText };
     let aNum = parseInt(Math.random() * 10);
@@ -139,7 +152,6 @@ document.addEventListener("click", (e) => {
     colorSettings(e);
   }
   if (e.target.type === "range") {
-    console.log("f");
     changeSize(e);
   }
 });
@@ -292,3 +304,26 @@ function changePar(x, y) {
   colorConfig(x[0], x[1], x[2], x[3], x[4]);
   changeColorVarCss(y[0], y[1], y[2], y[3], y[4]);
 }
+/* shotcuts */
+function shortcuts(e) {
+  if (e.key === "Escape") {
+    $customModal.style.opacity = 1;
+    $customModal.style.visibility = "visible";
+  }
+}
+$buttonReset.addEventListener("click", (e) => {
+  initApp();
+});
+function initApp() {
+  getText();
+  clearInterval(timer);
+  timer = false;
+  second = 0;
+  $inputWrite.removeAttribute("disabled");
+  $inputWrite.value = "";
+  $inputWrite.focus();
+}
+
+/* Init app */
+
+initApp();

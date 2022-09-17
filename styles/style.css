@@ -37,3 +37,9 @@
   height: 100%;
   border-radius: 1em;
 }
+.continer-button {
+  text-align: center;
+}
+.config-svg {
+  fill: var(--lettertext);
+}
