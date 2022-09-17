@@ -4,16 +4,17 @@ const azureTheme = ["#ABD4F2", "#3F96C7", "#478BC9", "#464646", "#8F8F8F"];
 const draculaTheme = ["#8AFF80", "#FF80BF", "#80FFEA", "#FFFF80", "#9580FF"];
 const ayuTheme = ["#39BAE6", "#FFB454", "#AAD94C", "#F07178", "#D2A6FF"];
 const monokaiTheme = ["#FD971F", "#A6E22E", "#F92672", "#E6DB74", "#AE81FF"];
-const cobaltTheme = ["#9EFFFF", "#FF80E1", "#FFEE80", "#FF9D00", "#FFFFFF"];
+const cobaltTheme = ["#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF"];
 /* var for colors css */
 const onedarkThemeCss = ["#282C34", "#F3F7FF", "#5C6370", "#ABB2BF", "#E06C75"];
 const azureThemeCss = ["#121212", "#dbe3e3", "#5c5c5c", "#478bc9", "#ae515e"];
 const draculaThemeCss = ["#22212C", "#FFFFFF", "#5E5C75", "#9580FF", "#FF80BF"];
 const ayuThemeCss = ["#0D1017", "#dbe3e3", "#373E4A", "#E6B450", "#D95757"];
 const monokaiThemeCss = ["#272822", "#dbe3e3", "#515344", "#FD971F", "#F92672"];
-const cobaltThemeCss = ["#002240", "#FFFFFF", "#20496E", "#9EFFFF", "#FFFFFF"];
+const cobaltThemeCss = ["#000000", "#FFFFFF", "#FFFFFF", "#F00", "#481212"];
 
 /* Input */
+const html = document.querySelector("html");
 const $textFollow = document.getElementById("textFollow");
 const $inputWrite = document.getElementById("inputWrite");
 /* Open modal */
@@ -43,7 +44,10 @@ let i = 0;
 let second = 0;
 let timer;
 let temp;
-
+let expMode = false;
+let countKey = 0;
+let count = 0;
+let epile;
 $inputWrite.addEventListener("keydown", (e) => {
   let valueChange = $inputWrite.value;
   if ($inputWrite.value == myArr[0].slice(0, valueChange.length)) {
@@ -77,7 +81,28 @@ $inputWrite.addEventListener("keydown", (e) => {
       $inputWrite.setAttribute("disabled", "true");
     }
   }
-
+  if (expMode && countKey == 5) {
+    countKey = 0;
+    epile = setInterval(() => {
+      count++;
+      if (count < 50) {
+        if (count % 2 !== 0) {
+          s.setProperty("--bgfont", "black");
+        } else {
+          s.setProperty("--bgfont", "red");
+        }
+      } else if (count > 50) {
+        if (count % 2 !== 0) {
+          s.setProperty("--bgfont", "white");
+        } else {
+          s.setProperty("--bgfont", "red");
+        }
+      } else if (count > 150) {
+      }
+    }, 1000);
+  }
+  countKey++;
+  console.log(countKey);
   shortcuts(e);
 });
 $inputWrite.addEventListener("keyup", (e) => {
@@ -197,36 +222,54 @@ function colorSettings(arg) {
   if (arg.length !== undefined) {
     if (arg === "azure") {
       changePar(azureTheme, azureThemeCss);
+      expMode = false;
     } else if (arg === "ayu") {
       changePar(ayuTheme, ayuThemeCss);
+      expMode = false;
     } else if (arg === "dracula") {
       changePar(draculaTheme, draculaThemeCss);
+      expMode = false;
     } else if (arg === "monokai") {
       changePar(monokaiTheme, monokaiThemeCss);
+      expMode = false;
     } else if (arg === "onedark") {
       changePar(onedarkTheme, onedarkThemeCss);
+      expMode = false;
     } else if (arg === "cobalt") {
       changePar(cobaltTheme, cobaltThemeCss);
+      expMode = true;
     } else return;
   } else {
     if (arg.target.value === "azure") {
       changePar(azureTheme, azureThemeCss);
       localStorage.setItem(colorSelect, "azure");
+      expMode = false;
+      location.reload();
     } else if (arg.target.value === "ayu") {
       changePar(ayuTheme, ayuThemeCss);
       localStorage.setItem(colorSelect, "ayu");
+      expMode = false;
+      location.reload();
     } else if (arg.target.value === "dracula") {
       changePar(draculaTheme, draculaThemeCss);
       localStorage.setItem(colorSelect, "dracula");
+      expMode = false;
+      location.reload();
     } else if (arg.target.value === "monokai") {
       changePar(monokaiTheme, monokaiThemeCss);
       localStorage.setItem(colorSelect, "monokai");
+      expMode = false;
+      location.reload();
     } else if (arg.target.value === "onedark") {
       changePar(onedarkTheme, onedarkThemeCss);
       localStorage.setItem(colorSelect, "onedark");
+      expMode = false;
+      location.reload();
     } else if (arg.target.value === "cobalt") {
       changePar(cobaltTheme, cobaltThemeCss);
       localStorage.setItem(colorSelect, "cobalt");
+      expMode = true;
+      countKey = 0;
     } else return;
   }
 }
