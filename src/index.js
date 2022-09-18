@@ -86,20 +86,40 @@ $inputWrite.addEventListener("keydown", (e) => {
     epile = setInterval(() => {
       count++;
       if (count < 50) {
-        if (count % 2 !== 0) {
-          s.setProperty("--bgfont", "black");
-        } else {
-          s.setProperty("--bgfont", "red");
-        }
-      } else if (count > 50) {
-        if (count % 2 !== 0) {
-          s.setProperty("--bgfont", "white");
-        } else {
-          s.setProperty("--bgfont", "red");
-        }
-      } else if (count > 150) {
+        hardModeTwo("deeppink", "blueviolet");
+      } else if (count > 50 && count < 100) {
+        hardModeTwo("black", "white");
+      } else if (count > 100 && count < 120) {
+        hardMode(
+          "https://gritaradio.com/wp-content/uploads/2022/08/Winnie-the-Pooh-Blood-and-Honey-1-951x620.jpg",
+          "https://s1.dmcdn.net/v/EZ7Z21X81q1zLXXRs/x720"
+        );
+      } else if (count > 120 && count < 150) {
+        hardModeTwo("black", "red");
+      } else if (count > 150 && count < 170) {
+        hardMode(
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlAyo-ETcxz8vwlRcFqcC-3UwQNl44jADw5A&usqp=CAU",
+          "https://i.pinimg.com/originals/61/53/ab/6153abfa59ca7dfb0c9ddba513e485d1.jpg"
+        );
+      } else if (count > 170 && count < 250) {
+        hardMode(
+          "https://www.elciudadano.com/wp-content/uploads/2017/03/ojos-que-te-ven-en-la-oscuridad-527x700.jpg",
+          "https://i.pinimg.com/736x/c9/70/f1/c970f1b98e7d09006c152569ce20adfd.jpg"
+        );
+      } else if (count > 250 && count < 300) {
+        hardModeTwo("aqua", "green");
+      } else if (count > 300 && count < 350) {
+        hardMode(
+          "https://www.elciudadano.com/wp-content/uploads/2017/03/ojos-que-te-ven-en-la-oscuridad-527x700.jpg",
+          "https://papik.pro/en/uploads/posts/2022-07/1658695549_6-papik-pro-p-eyes-on-a-black-background-eyes-6.jpg"
+        );
+      } else if (count > 350 && count < 400) {
+      } else if (count > 400 && count < 450) {
+      } else if (count > 450 && count < 500) {
+      } else {
+        hardModeTwo("black", "white");
       }
-    }, 1000);
+    }, 750);
   }
   countKey++;
   console.log(countKey);
@@ -366,7 +386,22 @@ function initApp() {
   $inputWrite.value = "";
   $inputWrite.focus();
 }
-
+function hardMode(url, url2) {
+  s.setProperty("--bgfont", "transparent");
+  if (count % 2 !== 0) {
+    html.style.backgroundImage = `url("${url}")`;
+  } else {
+    html.style.backgroundImage = `url("${url2}")`;
+  }
+}
+function hardModeTwo(color1, color2) {
+  html.style.backgroundImage = `none`;
+  if (count % 2 !== 0) {
+    s.setProperty("--bgfont", `${color1}`);
+  } else {
+    s.setProperty("--bgfont", `${color2}`);
+  }
+}
 /* Init app */
 
 initApp();
