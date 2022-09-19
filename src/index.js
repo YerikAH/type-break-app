@@ -155,7 +155,7 @@ $inputWrite.addEventListener("keyup", (e) => {
 // Get information (the texts) from the data.json file
 async function getText() {
   try {
-    let url = "../data/data.json";
+    let url = "./data/data.json";
     let res = await fetch(url);
     let json = await res.json();
     if (!res.ok) throw { status: res.status, statusText: res.statusText };
