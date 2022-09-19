@@ -8,36 +8,69 @@
     <title>typebreak</title>
   </head>
   <body>
+    <!-- modal -->
     <div class="custom-modal vw100 flex" id="customModal">
       <div class="modal-settings bgTheme flex">
-        <!--Ojo el boton lo cambiar por una imagen.-->
         <img src="./assets/exit.svg" id="closeModalCustom" class="close-icon" />
         <h3 class="logo">Settings</h3>
         <h4 class="title-option flex">Font family</h4>
         <p class="description-option">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero iste
-          minima ullam, suscipit tenetur inventore fugiat eius harum sapiente
-          pariatur illum, reprehenderit natus perferendis labore consequuntur.
-          Odit quibusdam rem eius.
+          Press any button to change the font family. By the way most fonts can
+          be used in your code editor.
         </p>
         <div class="display-grid font-bg-container">
-          <button class="button-custom font-bg" value="overpass">
+          <button
+            class="button-custom font-bg"
+            value="overpass"
+            style="font-family: Overpass mono"
+          >
             Overpass mono
           </button>
-          <button class="button-custom" value="fira">Fira code</button>
-          <button class="button-custom" value="ptmono">PT Mono</button>
-          <button class="button-custom" value="jetbrains">
+          <button
+            class="button-custom"
+            value="fira"
+            style="font-family: Fira code"
+          >
+            Fira code
+          </button>
+          <button
+            class="button-custom"
+            value="ptmono"
+            style="font-family: PT Mono"
+          >
+            PT Mono
+          </button>
+          <button
+            class="button-custom"
+            value="jetbrains"
+            style="font-family: JetBrains Mono"
+          >
             JetBrains Mono
           </button>
-          <button class="button-custom" value="space">Space Mono</button>
-          <button class="button-custom" value="share">Share Tech Mono</button>
+          <button
+            class="button-custom"
+            value="space"
+            style="font-family: Space Mono"
+          >
+            Space Mono
+          </button>
+          <button
+            class="button-custom"
+            value="share"
+            style="font-family: Share Tech Mono"
+          >
+            Share Tech Mono
+          </button>
         </div>
         <h4 class="title-option flex">Theme</h4>
         <p class="description-option">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero iste
-          minima ullam, suscipit tenetur inventore fugiat eius harum sapiente
-          pariatur illum, reprehenderit natus perferendis labore consequuntur.
-          Odit quibusdam rem eius.
+          Themes are different colors inspired by Visual Studio code themes.
+          This is important to read,<b
+            ><i>
+              do not choose the "cobalt", because you will see several colors in
+              less than 1 second, IT IS A LITTLE DANGEROUS.</i
+            ></b
+          >
         </p>
         <div class="bg-color display-grid">
           <button class="button-custom" value="azure">Azure</button>
@@ -49,10 +82,8 @@
         </div>
         <h4 class="title-option flex">Font size</h4>
         <p class="description-option">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero iste
-          minima ullam, suscipit tenetur inventore fugiat eius harum sapiente
-          pariatur illum, reprehenderit natus perferendis labore consequuntur.
-          Odit quibusdam rem eius.
+          One of the last options to customize the application. You can change
+          the font size. This is according to your taste(like).
         </p>
         <input
           type="range"
@@ -64,6 +95,7 @@
         <span style="color: white" id="letterSizeShow"></span>
       </div>
     </div>
+    <!-- header -->
     <header class="flex">
       <nav class="flex">
         <ul class="flex ul-nav">
@@ -123,6 +155,7 @@
         </ul>
       </nav>
     </header>
+    <!-- main -->
     <main class="flex">
       <section class="flex">
         <p id="textFollow" class="text-completed letter-ai"></p>
@@ -135,6 +168,7 @@
         </div>
       </section>
     </main>
+    <!-- footer -->
     <footer class="vw100 bgTheme">
       <div class="continer-button">
         <button class="button-config" id="buttonReset">
