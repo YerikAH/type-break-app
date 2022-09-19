@@ -15,3 +15,5 @@ A writing app with some customization options, the themes are a bit like Visual 
 - JavaScript
 
 ## Demo 💻
+
+https://yerikah.github.io/type-break-app/
