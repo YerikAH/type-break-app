@@ -8,32 +8,60 @@
     <title>typebreak</title>
   </head>
   <body>
-    <div class="custom-modal vw100" id="customModal">
-      <div class="modal-settings bgTheme">
+    <div class="custom-modal vw100 flex" id="customModal">
+      <div class="modal-settings bgTheme flex">
         <!--Ojo el boton lo cambiar por una imagen.-->
-        <button id="closeModalCustom">Cerrar modal</button>
-        <h4>Cambiar fuente</h4>
-        <div class="font-bg">
-          <button value="overpass">Overpass mono</button>
-          <button value="fira">Fira code</button>
-          <button value="ptmono">PT Mono</button>
-          <button value="jetbrains">JetBrains Mono</button>
-          <button value="space">Space Mono</button>
-          <button value="share">Share Tech Mono</button>
+        <img src="./assets/exit.svg" id="closeModalCustom" class="close-icon" />
+        <h3 class="logo">Settings</h3>
+        <h4 class="title-option flex">Font family</h4>
+        <p class="description-option">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero iste
+          minima ullam, suscipit tenetur inventore fugiat eius harum sapiente
+          pariatur illum, reprehenderit natus perferendis labore consequuntur.
+          Odit quibusdam rem eius.
+        </p>
+        <div class="display-grid font-bg-container">
+          <button class="button-custom font-bg" value="overpass">
+            Overpass mono
+          </button>
+          <button class="button-custom" value="fira">Fira code</button>
+          <button class="button-custom" value="ptmono">PT Mono</button>
+          <button class="button-custom" value="jetbrains">
+            JetBrains Mono
+          </button>
+          <button class="button-custom" value="space">Space Mono</button>
+          <button class="button-custom" value="share">Share Tech Mono</button>
         </div>
-        <h4>Cambiar color</h4>
-        <div class="bg-color">
-          <button value="azure">Azure</button>
-          <button value="ayu">Ayu</button>
-          <button value="dracula">Dracula</button>
-          <button value="monokai">Monokai</button>
-          <button value="onedark">One Dark</button>
-          <button value="cobalt">Cobalt</button>
+        <h4 class="title-option flex">Theme</h4>
+        <p class="description-option">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero iste
+          minima ullam, suscipit tenetur inventore fugiat eius harum sapiente
+          pariatur illum, reprehenderit natus perferendis labore consequuntur.
+          Odit quibusdam rem eius.
+        </p>
+        <div class="bg-color display-grid">
+          <button class="button-custom" value="azure">Azure</button>
+          <button class="button-custom" value="ayu">Ayu</button>
+          <button class="button-custom" value="dracula">Dracula</button>
+          <button class="button-custom" value="monokai">Monokai</button>
+          <button class="button-custom" value="onedark">One Dark</button>
+          <button class="button-custom" value="cobalt">Cobalt</button>
         </div>
-        <h4>Elegir tamaño de letra</h4>
-        <input type="range" min="1" max="10" id="letterSize" />
+        <h4 class="title-option flex">Font size</h4>
+        <p class="description-option">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero iste
+          minima ullam, suscipit tenetur inventore fugiat eius harum sapiente
+          pariatur illum, reprehenderit natus perferendis labore consequuntur.
+          Odit quibusdam rem eius.
+        </p>
+        <input
+          type="range"
+          min="1"
+          max="10"
+          id="letterSize"
+          class="style-score"
+        />
         <span style="color: white" id="letterSizeShow"></span>
-        <h4>Modo de dificultad</h4>
       </div>
     </div>
     <header class="flex">
@@ -89,7 +117,7 @@
             </svg>
             typebreak
           </h1>
-          <button class="button-config button-custom" id="customApp">
+          <button class="button-config button-custom-custom" id="customApp">
             <img src="./assets/icon.svg" alt="" />
           </button>
         </ul>

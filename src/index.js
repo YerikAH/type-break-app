@@ -48,6 +48,15 @@ let expMode = false;
 let countKey = 0;
 let count = 0;
 let epile;
+
+// You do not have internet uncomment these lines of code and comment the line of code number ..., Change the text of the variable textVar
+
+// textoVar =
+//   "Any text to type. 777 777 111 111 111 111 717171 111777 777111 222777 222 222111 8822 888 888222 33339939 99 99 3393 9933 9933 4444 04 04 000 44 004 000 444 5656 55 66 55 66 55 66 55 66 1289 23432189 789431246 91 4893175761 ";
+// myArr = textoVar.split(" ");
+// temp = myArr.length;
+// $textFollow.textContent = textoVar;
+
 $inputWrite.addEventListener("keydown", (e) => {
   let valueChange = $inputWrite.value;
   if ($inputWrite.value == myArr[0].slice(0, valueChange.length)) {
@@ -85,41 +94,45 @@ $inputWrite.addEventListener("keydown", (e) => {
     countKey = 0;
     epile = setInterval(() => {
       count++;
-      if (count < 50) {
-        hardModeTwo("deeppink", "blueviolet");
-      } else if (count > 50 && count < 100) {
-        hardModeTwo("black", "white");
-      } else if (count > 100 && count < 120) {
-        hardMode(
-          "https://gritaradio.com/wp-content/uploads/2022/08/Winnie-the-Pooh-Blood-and-Honey-1-951x620.jpg",
-          "https://s1.dmcdn.net/v/EZ7Z21X81q1zLXXRs/x720"
-        );
-      } else if (count > 120 && count < 150) {
-        hardModeTwo("black", "red");
-      } else if (count > 150 && count < 170) {
-        hardMode(
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlAyo-ETcxz8vwlRcFqcC-3UwQNl44jADw5A&usqp=CAU",
-          "https://i.pinimg.com/originals/61/53/ab/6153abfa59ca7dfb0c9ddba513e485d1.jpg"
-        );
-      } else if (count > 170 && count < 250) {
-        hardMode(
-          "https://www.elciudadano.com/wp-content/uploads/2017/03/ojos-que-te-ven-en-la-oscuridad-527x700.jpg",
-          "https://i.pinimg.com/736x/c9/70/f1/c970f1b98e7d09006c152569ce20adfd.jpg"
-        );
-      } else if (count > 250 && count < 300) {
-        hardModeTwo("aqua", "green");
-      } else if (count > 300 && count < 350) {
-        hardMode(
-          "https://www.elciudadano.com/wp-content/uploads/2017/03/ojos-que-te-ven-en-la-oscuridad-527x700.jpg",
-          "https://papik.pro/en/uploads/posts/2022-07/1658695549_6-papik-pro-p-eyes-on-a-black-background-eyes-6.jpg"
-        );
-      } else if (count > 350 && count < 400) {
-      } else if (count > 400 && count < 450) {
-      } else if (count > 450 && count < 500) {
-      } else {
-        hardModeTwo("black", "white");
-      }
-    }, 750);
+      // first option or if no only coment, line code 97, 98, ... , 107.
+      let randomNumberOne = Math.random() * 255;
+      let randomNumberTwo = Math.random() * 255;
+      let randomNumberThree = Math.random() * 255;
+
+      let randomNumberOneI = Math.random() * 255;
+      let randomNumberTwoI = Math.random() * 255;
+      let randomNumberThreeI = Math.random() * 255;
+      hardModeTwo(
+        `rgb(${randomNumberOne}, ${randomNumberTwo}, ${randomNumberThree})`,
+        `rgb(${randomNumberOneI}, ${randomNumberTwoI}, ${randomNumberThreeI})`
+      );
+      // second option
+      // if (count < 200) {
+      //   hardModeTwo("red", "yellow");
+      // } else if (count > 200 && count < 400) {
+      //   hardModeTwo("orange", "pink");
+      // } else if (count > 400 && count < 600) {
+      //   hardModeTwo("brown", "black");
+      // } else if (count > 600 && count < 800) {
+      //   hardModeTwo("blue", "purple");
+      // } else if (count > 800 && count < 1000) {
+      //   hardModeTwo("skyblue", "aquamarine");
+      // } else if (count > 1000 && count < 1200) {
+      //   hardModeTwo("cadetblue", "cornflowerblue");
+      // } else if (count > 1200 && count < 1400) {
+      //   hardModeTwo("aqua", "midnightblue");
+      // } else if (count > 1400 && count < 1600) {
+      //   hardModeTwo("gray", "pink");
+      // } else if (count > 1600 && count < 1800) {
+      //   hardModeTwo("white", "yellow");
+      // } else if (count > 1800 && count < 2000) {
+      //   hardModeTwo("orange", "red");
+      // } else if (count > 2000 && count < 2200) {
+      //   hardModeTwo("black", "red");
+      // } else {
+      //   hardModeTwo("black", "white");
+      // }
+    }, 5000);
   }
   countKey++;
   console.log(countKey);
@@ -242,19 +255,14 @@ function colorSettings(arg) {
   if (arg.length !== undefined) {
     if (arg === "azure") {
       changePar(azureTheme, azureThemeCss);
-      expMode = false;
     } else if (arg === "ayu") {
       changePar(ayuTheme, ayuThemeCss);
-      expMode = false;
     } else if (arg === "dracula") {
       changePar(draculaTheme, draculaThemeCss);
-      expMode = false;
     } else if (arg === "monokai") {
       changePar(monokaiTheme, monokaiThemeCss);
-      expMode = false;
     } else if (arg === "onedark") {
       changePar(onedarkTheme, onedarkThemeCss);
-      expMode = false;
     } else if (arg === "cobalt") {
       changePar(cobaltTheme, cobaltThemeCss);
       expMode = true;
@@ -263,28 +271,33 @@ function colorSettings(arg) {
     if (arg.target.value === "azure") {
       changePar(azureTheme, azureThemeCss);
       localStorage.setItem(colorSelect, "azure");
-      expMode = false;
-      location.reload();
+      if (localStorage.getItem(colorSelect) === "cobalt") {
+        location.reload();
+      }
     } else if (arg.target.value === "ayu") {
       changePar(ayuTheme, ayuThemeCss);
       localStorage.setItem(colorSelect, "ayu");
-      expMode = false;
-      location.reload();
+      if (localStorage.getItem(colorSelect) === "cobalt") {
+        location.reload();
+      }
     } else if (arg.target.value === "dracula") {
       changePar(draculaTheme, draculaThemeCss);
       localStorage.setItem(colorSelect, "dracula");
-      expMode = false;
-      location.reload();
+      if (localStorage.getItem(colorSelect) === "cobalt") {
+        location.reload();
+      }
     } else if (arg.target.value === "monokai") {
       changePar(monokaiTheme, monokaiThemeCss);
       localStorage.setItem(colorSelect, "monokai");
-      expMode = false;
-      location.reload();
+      if (localStorage.getItem(colorSelect) === "cobalt") {
+        location.reload();
+      }
     } else if (arg.target.value === "onedark") {
       changePar(onedarkTheme, onedarkThemeCss);
       localStorage.setItem(colorSelect, "onedark");
-      expMode = false;
-      location.reload();
+      if (localStorage.getItem(colorSelect) === "cobalt") {
+        location.reload();
+      }
     } else if (arg.target.value === "cobalt") {
       changePar(cobaltTheme, cobaltThemeCss);
       localStorage.setItem(colorSelect, "cobalt");
@@ -403,5 +416,4 @@ function hardModeTwo(color1, color2) {
   }
 }
 /* Init app */
-
 initApp();
