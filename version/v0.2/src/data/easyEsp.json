@@ -1,0 +1,30 @@
+[
+    {
+        "word":"movimiento",
+        "correctWord":false        
+    },
+    {
+        "word":"jugar",
+        "correctWord":false        
+    },
+    {
+        "word":"cambiar",
+        "correctWord":false        
+    },
+    {
+        "word":"tiempo",
+        "correctWord":false        
+    },
+    {
+        "word":"hacer",
+        "correctWord":false        
+    },
+    {
+        "word":"saltar",
+        "correctWord":false        
+    },
+    {
+        "word":"dormir",
+        "correctWord":false        
+    }
+]

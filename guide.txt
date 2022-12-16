@@ -1,0 +1,26 @@
+que cada letra sea verfiicada
+
+hola
+_
+
+write: h
+
+hola 
+h_
+write: ha
+
+en espacios
+
+hola mundo
+hola_
+
+write: hola
+Se verificara cada letra.
+Por cada letra que se presiona, se tiene que verificar que una palabra esta bien escrita o no.
+
+hola mundo, Juan
+write: hola "muna" // error
+
+convertir todo el texto en una objeto que tiene arrays donde tiene la palabra y un id unico. y se renderizara esto en un componente. 
+
+Espacio significa otra palabra.
