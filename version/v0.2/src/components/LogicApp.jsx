@@ -7,8 +7,6 @@ export default function LogicApp() {
   const [word, setWord] = useState([]);
   const [wordWrite, setWordWrite] = useState("");
   const [followIndex, setFollowIndex] = useState(0);
-  const [lesscount, setLesscount] = useState(0)
-  const [countSpace, setCountSpace] = useState(0)
 
   async function getDataWord() {
     let url = "./src/data/easyEsp.json";
@@ -29,6 +27,7 @@ export default function LogicApp() {
           const createLetter = {
             letterElement: item,
             id: crypto.randomUUID(),
+            writeType: false,
           };
           fullLetter.push(createLetter);
         }
@@ -36,44 +35,40 @@ export default function LogicApp() {
       setWord(fullLetter);
     } catch (err) {}
   }
-
+  const handleKeyDown = (e) => {
+    if (e.key === "Backspace") {
+      e.preventDefault();
+    }
+  };
   const handleChange = (e) => {
     const valueCapture = e.target.value;
-    let valueCaptureLength = (valueCapture.length - 1) - lesscount
+    let valueCaptureLength = valueCapture.length - 1;
     setWordWrite(valueCapture);
 
-    if (
+    console.log("our write: " + `${e.target.value[valueCaptureLength]}`);
+    console.log("machine write: " + `${word[followIndex].letterElement}`);
+
+    const validate =
       valueCapture.slice(-1) === word[followIndex].letterElement &&
-      valueCaptureLength === followIndex && lesscount === countSpace
-    ) {
-      if(followIndex%4===3){
-        setCountSpace(countSpace + 1 )
-      }
+      valueCaptureLength === followIndex;
 
-
+    if (validate) {
       setFollowIndex(followIndex + 1);
       console.log("Check");
     } else if (valueCapture.slice(-1) === " ") {
-      if(followIndex%4===3){
-        setLesscount(lesscount + 1)
-      }
       console.log("espacio");
     } else {
+      console.log("Error");
+      console.log(valueCapture.slice(-1) === word[followIndex].letterElement);
+      console.log(valueCaptureLength === followIndex);
 
-      if (valueCaptureLength < followIndex) {
-        setFollowIndex(followIndex - 1);
-        console.log("Regresando");
-      }else{
-        console.log("Error");
-      }
+      let wordTemp = [...word];
+      let otherVar = wordTemp.find((item) => item.id === word[followIndex].id);
+      console.log(otherVar);
+      otherVar.writeType = true;
+      setWord(wordTemp);
+      setFollowIndex(followIndex + 1);
     }
-    console.log(lesscount)
-    console.log(countSpace)
-
-
-
-    // console.log("our write " + `${e.target.value[valueCaptureLength]}`);
-    // console.log("machine write " + `${word[followIndex].letterElement}`);
   };
 
   useEffect(() => {
@@ -86,13 +81,29 @@ export default function LogicApp() {
         {word.map((item, k) => {
           return (
             <>
-              <i key={item.id}>{item.letterElement}</i>
-              {(k + 1) % 4 == 0 && " "}
+              {item.writeType ? (
+                <>
+                  <i className="bad-job" key={item.id}>
+                    {item.letterElement}
+                  </i>
+                </>
+              ) : (
+                <>
+                  <i className="good-job" key={item.id}>
+                    {item.letterElement}
+                  </i>
+                </>
+              )}
             </>
           );
         })}
       </p>
-      <input type="text" value={wordWrite} onChange={handleChange} />
+      <input
+        type="text"
+        value={wordWrite}
+        onChange={handleChange}
+        onKeyDown={handleKeyDown}
+      />
     </div>
   );
 }
