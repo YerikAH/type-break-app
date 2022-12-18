@@ -7,6 +7,7 @@ export default function LogicApp() {
   const [word, setWord] = useState([]);
   const [wordWrite, setWordWrite] = useState("");
   const [followIndex, setFollowIndex] = useState(0);
+  const [changeLetters, setChangeLetters] = useState("wordFourLetters")
 
   async function getDataWord() {
     let url = "./src/data/easyEsp.json";
@@ -19,91 +20,59 @@ export default function LogicApp() {
           resStatusText: res.statusText,
         };
       }
-      let fullLetter = [];
-      json.forEach((element) => {
-        const wordSeparate = element.word;
-        for (let i = 0; i < wordSeparate.length; i++) {
-          const item = wordSeparate[i];
-          const createLetter = {
-            letterElement: item,
-            id: crypto.randomUUID(),
-            writeType: false,
-          };
-          fullLetter.push(createLetter);
-        }
-      });
-      setWord(fullLetter);
+      let saveJsonWord = [];
+      for (let i = 0; i < 100; i++) {
+        const selectArrJsonWord = json[0][changeLetters];
+        const numberRandom = Math.floor(
+          Math.random() * selectArrJsonWord.length
+        );
+        const getContentJsonWork = selectArrJsonWord[numberRandom];
+
+        saveJsonWord.push(getContentJsonWork);
+      }
+      setWord(saveJsonWord);
     } catch (err) {}
   }
-  const handleKeyDown = (e) => {
-    if (e.key === "Backspace") {
-      e.preventDefault();
-    }
-  };
+
   const handleChange = (e) => {
-    const valueCapture = e.target.value;
-    let valueCaptureLength = valueCapture.length - 1;
-    setWordWrite(valueCapture);
-
-    console.log("our write: " + `${e.target.value[valueCaptureLength]}`);
-    console.log("machine write: " + `${word[followIndex].letterElement}`);
-
-    const validate =
-      valueCapture.slice(-1) === word[followIndex].letterElement &&
-      valueCaptureLength === followIndex;
-
-    if (validate) {
-      setFollowIndex(followIndex + 1);
-      console.log("Check");
-    } else if (valueCapture.slice(-1) === " ") {
-      console.log("espacio");
-    } else {
-      console.log("Error");
-      console.log(valueCapture.slice(-1) === word[followIndex].letterElement);
-      console.log(valueCaptureLength === followIndex);
-
-      let wordTemp = [...word];
-      let otherVar = wordTemp.find((item) => item.id === word[followIndex].id);
-      console.log(otherVar);
-      otherVar.writeType = true;
-      setWord(wordTemp);
-      setFollowIndex(followIndex + 1);
+    const textWrite = e.target.value;
+    setWordWrite(textWrite);
+    if (textWrite.slice(-1) === " ") {
+      const deleteSpace = textWrite.slice(0, textWrite.length - 1);
+      if (deleteSpace === word[0]) {
+        const deleteFirstElement = word.slice(1, word.length);
+        setWordWrite("");
+        setWord(deleteFirstElement);
+      } else {
+        console.log("Error");
+      }
     }
   };
-
+  const handleClickChange = (e) =>{
+    setChangeLetters(e.target.value)
+    getDataWord();
+  }
   useEffect(() => {
     getDataWord();
-  }, []);
+  }, [changeLetters]);
 
   return (
     <div className="content-center">
       <p>
-        {word.map((item, k) => {
-          return (
-            <>
-              {item.writeType ? (
-                <>
-                  <i className="bad-job" key={item.id}>
-                    {item.letterElement}
-                  </i>
-                </>
-              ) : (
-                <>
-                  <i className="good-job" key={item.id}>
-                    {item.letterElement}
-                  </i>
-                </>
-              )}
-            </>
-          );
-        })}
+        {word[0]} {word[1]}
       </p>
-      <input
-        type="text"
-        value={wordWrite}
-        onChange={handleChange}
-        onKeyDown={handleKeyDown}
-      />
+      {word}
+      <input value={wordWrite} onChange={handleChange} />
+      <div className="">
+        <button value="wordThreeLetters" onClick={handleClickChange} >3 letras</button>
+        <button value="wordFourLetters" onClick={handleClickChange}>4 letras</button>
+        <button value="wordFiveLetters" onClick={handleClickChange}>5 letras</button>
+        <button value="wordSixLetters" onClick={handleClickChange}>6 letras</button>
+        <button value="wordSevenLetters" onClick={handleClickChange}>7 letras</button>
+        <button value="wordEightLetters" onClick={handleClickChange}>8 letras</button>
+        <button value="wordNineLetters" onClick={handleClickChange}>9 letras</button>
+        <button value="wordTenLetters" onClick={handleClickChange}>10 letras</button>
+      </div>
     </div>
   );
 }
