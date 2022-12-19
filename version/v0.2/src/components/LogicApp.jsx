@@ -10,12 +10,19 @@ export default function LogicApp() {
   const [changeLetters, setChangeLetters] = useState("wordFourLetters");
   const [corretWord, setCorretWord] = useState(0);
   const [incorretWord, setIncorretWord] = useState(0);
-  const [startTest, setStartTest] = useState(false);
 
+  /* render */
+  const [startTest, setStartTest] = useState(false);
+  const [testEnd, setTestEnd] = useState(true);
 
   /* Timer */
-const [timer, setTimer] = useState(30)
-const [timerUi, setTimerUi] = useState(30)
+  const [timeCustomInput, setTimeCustomInput] = useState("")
+  const [timeCustomInputError, setTimeCustomInputError] = useState(false)
+  const [timer, setTimer] = useState(30);
+  const [timerUi, setTimerUi] = useState(30);
+
+  /* result wpm */
+   const [wpmTotal, setWpmTotal] = useState("")
 
   async function getDataWord() {
     let url = "./src/data/easyEsp.json";
@@ -29,7 +36,7 @@ const [timerUi, setTimerUi] = useState(30)
         };
       }
       let saveJsonWord = [];
-      for (let i = 0; i < 100; i++) {
+      for (let i = 0; i < 10000; i++) {
         const selectArrJsonWord = json[0][changeLetters];
         const numberRandom = Math.floor(
           Math.random() * selectArrJsonWord.length
@@ -89,43 +96,143 @@ const [timerUi, setTimerUi] = useState(30)
 
   /* Timer */
 
-  const handleStartTimer = () =>{
+  const handleStartTimer = () => {
     let intervalTimer;
-    let count  = 0 
-    setStartTest(true)
-    intervalTimer=setInterval(()=>{
-      count++
-      console.log(count)
-      if(count == timer){
-        clearInterval(intervalTimer)
-        console.log("Bye interval")
-      }
-    },1000)
-  }
-  const handleTimer = (e)=>{
-    const stringToNumber = parseInt(e.target.value)
-    setTimer(stringToNumber)
-    setTimerUi(stringToNumber)
-  }
+    let count = 0;
+    let countLess = timerUi;
+    setStartTest(true);
+    intervalTimer = setInterval(() => {
+      count++;
+      countLess--;
+      setTimerUi(countLess);
+      if (count == timer) {
+        clearInterval(intervalTimer);
+        setTestEnd(false);
+        setTimerUi(timer);
 
+        console.log("Bye interval");
+      }
+    }, 1000);
+  };
+  const handleTimer = (e) => {
+    const stringToNumber = parseInt(e.target.value);
+    setTimer(stringToNumber);
+    setTimerUi(stringToNumber);
+  };
+  const handleChangeVerifyTimer = e =>{
+    const inputValueTimer = e.target.value
+    setTimeCustomInput(inputValueTimer)
+
+    const INTEGER_REGEX = /^\d+$/;
+    if (!INTEGER_REGEX.test(inputValueTimer)) {
+      setTimeCustomInputError(true)
+      setTimer(30);
+      setTimerUi(30);
+    } else {
+      setTimeCustomInputError(false)
+      const stringToNumber = parseInt(e.target.value)
+      setTimer(stringToNumber);
+      setTimerUi(stringToNumber);
+    }
+  }
+  function convertSecondToMinute(second) {
+    if (second < 60) {
+      return `${second}`;
+    } else {
+      const getMinuteTime = Math.trunc(second / 60);
+      const getSecondTime = second - getMinuteTime * 60;
+      return `${getMinuteTime} : ${getSecondTime}`;
+    }
+  }
+  function calcWpm(badWord,goodWord,time){
+    let wordTotal = goodWord - badWord 
+    
+    const result = parseFloat(wordTotal / (time / 60)).toFixed(2)
+    console.log("Aqui")
+    console.log(goodWord)
+    console.log(badWord)
+    console.log(wordTotal)
+    console.log(time/60)
+    console.log(wordTotal / (time / 60))
+
+    if(result < 0){
+      return 0
+    }else{
+      return result
+    }
+
+  }
+  const handleBackClick = () => {
+    setTestEnd(true);
+    setStartTest(false);
+    setCorretWord(0)
+    setIncorretWord(0)
+    setWordWrite("")
+  };
+  useEffect(() => {
+    let resultWpm = calcWpm(incorretWord,corretWord,timer)
+    setWpmTotal(resultWpm)
+  }, [testEnd])
+  
   return (
     <div className="content-center">
       {startTest ? (
         <>
-          <i>Tu tiempo: </i>
-          <h2>
-            <div>Palabras correctas: </div>
-            <b>{corretWord}</b>
-          </h2>
-          <h2>
-            <div>Palabras incorrectas: </div>
-            <b>{incorretWord}</b>
-          </h2>
-          <p>
-            {word[0]} {word[1]}
-          </p>
-          {word}
-          <input style={errorStyle} value={wordWrite} onChange={handleChange} />
+          {testEnd ? (
+            <>
+              <i>Tu tiempo: {convertSecondToMinute(timerUi)}</i>
+              <h2>
+                <div>Palabras correctas: </div>
+                <b>{corretWord}</b>
+              </h2>
+              <h2>
+                <div>Palabras incorrectas: </div>
+                <b>{incorretWord}</b>
+              </h2>
+              <p>
+                {word[0]} {word[1]}
+              </p>
+              {word}
+
+              <input
+                style={errorStyle}
+                value={wordWrite}
+                onChange={handleChange}
+              />
+            </>
+          ) : (
+            <>
+              <p>Los resultados son: {wpmTotal} </p>{" "}
+              <button onClick={handleBackClick}>Volver atras</button>
+            </>
+          )}
+        </>
+      ) : (
+        <>
+          <h1>¿Quieres comenzar el Test?, dale click en el botón.</h1>
+
+          <button onClick={handleStartTimer}>Comenzar test</button>
+
+          <div>
+            <h3>Elige los tiempos</h3>
+            <button value="15" onClick={handleTimer}>
+              15
+            </button>
+            <button value="30" onClick={handleTimer}>
+              30
+            </button>
+            <button value="60" onClick={handleTimer}>
+              60
+            </button>
+            <button value="120" onClick={handleTimer}>
+              120
+            </button>
+            <label>Elegir tiempo en segundos customizable:</label>
+            <span>{convertSecondToMinute(timerUi)}</span>
+            <input type="text" value={timeCustomInput} onChange={handleChangeVerifyTimer}/>
+            {timeCustomInputError && <span>No es un numero entero</span>}
+          </div>
+
           <div className="">
             <button value="wordThreeLetters" onClick={handleClickChange}>
               3 letras
@@ -151,17 +258,6 @@ const [timerUi, setTimerUi] = useState(30)
             <button value="wordTenLetters" onClick={handleClickChange}>
               10 letras
             </button>
-          </div>
-        </>
-      ) : (
-        <>
-          <h1>¿Quieres comenzar el Test?, dale click en el botón.</h1>
-          
-          <button onClick={handleStartTimer}>Comenzar test</button>
-
-          <div>
-            <h3>Elige los tiempos</h3>
-            <button value="15">15</button><button value="30">30</button><button value="60">60</button><button value="120">120</button>
           </div>
         </>
       )}
