@@ -123,7 +123,7 @@ export default function LogicApp() {
     const inputValueTimer = e.target.value
     setTimeCustomInput(inputValueTimer)
 
-    const INTEGER_REGEX = /^\d+$/;
+    const INTEGER_REGEX = /^[1-9][0-9]*$/;;
     if (!INTEGER_REGEX.test(inputValueTimer)) {
       setTimeCustomInputError(true)
       setTimer(30);
