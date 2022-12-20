@@ -11,6 +11,7 @@ import {
   VoidDiv,
 } from "../styles/main_styles";
 import ButtonStartTestComponent from "./ButtonStartTestComponent.jsx";
+import EndTestComponent from "./EndTestComponent";
 
 export default function MainContent() {
   return (
@@ -29,7 +30,8 @@ export default function MainContent() {
           <MainSectionWordSecond>atender</MainSectionWordSecond>
         </MainSectionWordSecondBox>
       </MainSectionContainer> */}
-      <ButtonStartTestComponent></ButtonStartTestComponent>
+      {/* <ButtonStartTestComponent></ButtonStartTestComponent> */}
+      <EndTestComponent></EndTestComponent>
     </MainComponentStyles>
   );
 }
