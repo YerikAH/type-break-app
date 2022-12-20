@@ -4,7 +4,7 @@ import { HeaderComponent, HeaderComponentCenter, HeComLogo, HeComtimer } from '.
 
 export default function Header() {
   return (
-   <HeaderComponent role="heading">
+   <HeaderComponent role="heading ">
     <HeaderComponentCenter>
       <HeComLogo src={logo}/>
       <HeComtimer>1:20</HeComtimer>

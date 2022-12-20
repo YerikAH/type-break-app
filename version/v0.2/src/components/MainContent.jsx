@@ -1,25 +1,35 @@
 import React from "react";
 import {
   MainComponentStyles,
-  MainSection,
+  MainSectinWordInput,
   MainSectionContainer,
   MainSectionWord,
   MainSectionWordSecond,
   MainSectionWordSecondBox,
+  MainSectionWordWrite,
+  MainSectionWordWriteCenter,
+  VoidDiv,
 } from "../styles/main_styles";
+import ButtonStartTestComponent from "./ButtonStartTestComponent.jsx";
 
 export default function MainContent() {
   return (
     <MainComponentStyles role="main">
-      <MainSectionContainer>
-        <MainSection>
-          <MainSectionWord>caramba</MainSectionWord>
-        </MainSection>
+      {/* <MainSectionContainer>
+        <VoidDiv></VoidDiv>
+        <MainSectionWordWrite>
+          <MainSectionWordWriteCenter>
+            <MainSectionWord>caramba</MainSectionWord>
+            <MainSectinWordInput />
+          </MainSectionWordWriteCenter>
+        </MainSectionWordWrite>
+
         <MainSectionWordSecondBox>
           <MainSectionWordSecond>juzgado</MainSectionWordSecond>
           <MainSectionWordSecond>atender</MainSectionWordSecond>
         </MainSectionWordSecondBox>
-      </MainSectionContainer>
+      </MainSectionContainer> */}
+      <ButtonStartTestComponent></ButtonStartTestComponent>
     </MainComponentStyles>
   );
 }
