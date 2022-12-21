@@ -4,6 +4,7 @@
   --color-icon: #414141;
   --color-text: #dbe3e3;
   --color-good: #e4bf60;
+  --color-bad: hsl(0, 100%, 73%);
   /* Modal CSS*/
   --bg-modal: #1d1d1d;
   --color-input: #282828;

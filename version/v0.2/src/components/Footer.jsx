@@ -1,26 +1,54 @@
 import React from "react";
 import options from "../assets/settings.svg";
 import optionsExit from "../assets/settings_exit.svg";
+import backIcon from "../assets/back_icon.svg";
 import {
   FooterComponent,
   FooterComponentCenter,
   FooterComponentCenterSetting,
+  ButtonComeBack,
   FooterComponentCenterSettingImage,
 } from "../styles/footer_styles";
 
-export default function Footer() {
+export default function Footer({
+  setModal,
+  modal,
+  startTest,
+  testEnd,
+  setTestEnd,
+  setStartTest,
+}) {
   const handleClick = () => {
-    console.log("Abrir y cerrar");
+    setModal(!modal);
+  };
+  const handleBackClick = () => {
+    setTestEnd(true);
+    setStartTest(false);
   };
   return (
     <FooterComponent role="footer">
       <FooterComponentCenter>
-        <FooterComponentCenterSetting
-          aria-label="open modal"
-          onClick={handleClick}
-        >
-          <FooterComponentCenterSettingImage src={options} />
-        </FooterComponentCenterSetting>
+        {!startTest && (
+          <>
+            <FooterComponentCenterSetting
+              aria-label="open modal"
+              onClick={handleClick}
+            >
+              {modal ? (
+                <FooterComponentCenterSettingImage src={optionsExit} />
+              ) : (
+                <FooterComponentCenterSettingImage src={options} />
+              )}
+            </FooterComponentCenterSetting>
+          </>
+        )}
+        {!testEnd ? (
+          <ButtonComeBack onClick={handleBackClick}>
+            <FooterComponentCenterSettingImage src={backIcon} />
+          </ButtonComeBack>
+        ) : (
+          <></>
+        )}
       </FooterComponentCenter>
     </FooterComponent>
   );

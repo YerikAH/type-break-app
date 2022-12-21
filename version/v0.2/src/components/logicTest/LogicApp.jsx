@@ -16,13 +16,13 @@ export default function LogicApp() {
   const [testEnd, setTestEnd] = useState(true);
 
   /* Timer */
-  const [timeCustomInput, setTimeCustomInput] = useState("")
-  const [timeCustomInputError, setTimeCustomInputError] = useState(false)
+  const [timeCustomInput, setTimeCustomInput] = useState("");
+  const [timeCustomInputError, setTimeCustomInputError] = useState(false);
   const [timer, setTimer] = useState(30);
   const [timerUi, setTimerUi] = useState(30);
 
   /* result wpm */
-   const [wpmTotal, setWpmTotal] = useState("")
+  const [wpmTotal, setWpmTotal] = useState("");
 
   async function getDataWord() {
     let url = "./src/data/easyEsp.json";
@@ -119,22 +119,23 @@ export default function LogicApp() {
     setTimer(stringToNumber);
     setTimerUi(stringToNumber);
   };
-  const handleChangeVerifyTimer = e =>{
-    const inputValueTimer = e.target.value
-    setTimeCustomInput(inputValueTimer)
+  const handleChangeVerifyTimer = (e) => {
+    const inputValueTimer = e.target.value;
+    setTimeCustomInput(inputValueTimer);
 
-    const INTEGER_REGEX = /^[1-9][0-9]*$/;;
+    const INTEGER_REGEX = /^[1-9][0-9]*$/;
     if (!INTEGER_REGEX.test(inputValueTimer)) {
-      setTimeCustomInputError(true)
+      setTimeCustomInputError(true);
       setTimer(30);
       setTimerUi(30);
     } else {
-      setTimeCustomInputError(false)
-      const stringToNumber = parseInt(e.target.value)
+      setTimeCustomInputError(false);
+      const stringToNumber = parseInt(e.target.value);
       setTimer(stringToNumber);
       setTimerUi(stringToNumber);
     }
-  }
+  };
+
   function convertSecondToMinute(second) {
     if (second < 60) {
       return `${second}`;
@@ -144,36 +145,32 @@ export default function LogicApp() {
       return `${getMinuteTime} : ${getSecondTime}`;
     }
   }
-  function calcWpm(badWord,goodWord,time){
-    let wordTotal = goodWord - badWord 
-    
-    const result = parseFloat(wordTotal / (time / 60)).toFixed(2)
-    console.log("Aqui")
-    console.log(goodWord)
-    console.log(badWord)
-    console.log(wordTotal)
-    console.log(time/60)
-    console.log(wordTotal / (time / 60))
 
-    if(result < 0){
-      return 0
-    }else{
-      return result
+  function calcWpm(badWord, goodWord, time) {
+    let wordTotal = goodWord - badWord;
+
+    const result = parseFloat(wordTotal / (time / 60)).toFixed(2);
+
+    if (result < 0) {
+      return 0;
+    } else {
+      return result;
     }
-
   }
+
   const handleBackClick = () => {
     setTestEnd(true);
     setStartTest(false);
-    setCorretWord(0)
-    setIncorretWord(0)
-    setWordWrite("")
+    setCorretWord(0);
+    setIncorretWord(0);
+    setWordWrite("");
   };
+
   useEffect(() => {
-    let resultWpm = calcWpm(incorretWord,corretWord,timer)
-    setWpmTotal(resultWpm)
-  }, [testEnd])
-  
+    let resultWpm = calcWpm(incorretWord, corretWord, timer);
+    setWpmTotal(resultWpm);
+  }, [testEnd]);
+
   return (
     <div className="content-center">
       {startTest ? (
@@ -229,7 +226,11 @@ export default function LogicApp() {
             </button>
             <label>Elegir tiempo en segundos customizable:</label>
             <span>{convertSecondToMinute(timerUi)}</span>
-            <input type="text" value={timeCustomInput} onChange={handleChangeVerifyTimer}/>
+            <input
+              type="text"
+              value={timeCustomInput}
+              onChange={handleChangeVerifyTimer}
+            />
             {timeCustomInputError && <span>No es un numero entero</span>}
           </div>
 

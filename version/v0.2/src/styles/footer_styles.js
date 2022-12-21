@@ -25,3 +25,17 @@ export const FooterComponentCenterSetting = styled.button`
   position: relative;
 `;
 export const FooterComponentCenterSettingImage = styled.img``;
+export const ButtonComeBack = styled.button`
+  background: transparent;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 100rem;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+  &:hover {
+    background-color: var(--bg-modal);
+  }
+`;
