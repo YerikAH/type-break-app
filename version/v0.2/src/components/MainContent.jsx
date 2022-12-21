@@ -30,8 +30,8 @@ export default function MainContent() {
           <MainSectionWordSecond>atender</MainSectionWordSecond>
         </MainSectionWordSecondBox>
       </MainSectionContainer> */}
-      {/* <ButtonStartTestComponent></ButtonStartTestComponent> */}
-      <EndTestComponent></EndTestComponent>
+      <ButtonStartTestComponent></ButtonStartTestComponent>
+      {/* <EndTestComponent></EndTestComponent> */}
     </MainComponentStyles>
   );
 }

@@ -9,7 +9,7 @@ export const MainComponentButton = styled.div`
 export const MainButtonStartTest = styled.button`
   background: var(--bg-modal);
   font-size: 1rem;
-  padding: 0.5rem 1rem;
+  padding: 0.7rem 1.5rem;
   border-radius: 0.5rem;
   font-weight: 700;
   border: none;
