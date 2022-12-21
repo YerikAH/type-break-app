@@ -76,3 +76,9 @@ export const ModalBoxInput = styled.input`
   width: 100%;
   font-weight: 800;
 `;
+export const ErrorModal = styled.p`
+  font-size: 0.8rem;
+  text-align: center;
+  color: var(--color-bad);
+  font-style: italic;
+`;

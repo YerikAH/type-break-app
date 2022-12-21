@@ -8,6 +8,7 @@ import {
   ModalBoxTitle,
   ModalComponent,
   ModalComponentBox,
+  ErrorModal,
   ModalBoxButtonText,
 } from "../styles/options_modal";
 import ReactDOM from "react-dom";
@@ -27,6 +28,7 @@ export default function OptionsModal({
     const stringToNumber = parseInt(e.target.value);
     setTimer(stringToNumber);
     setTimerUi(stringToNumber);
+    setTimeCustomInputError(false);
   };
 
   const handleChangeVerifyTimer = (e) => {
@@ -102,6 +104,11 @@ export default function OptionsModal({
             onChange={handleChangeVerifyTimer}
           />
         </ModalBoxButtonBox>
+        {timeCustomInputError && (
+          <ErrorModal>
+            There is an error in the input, the default value of 30 seconds.
+          </ErrorModal>
+        )}
       </ModalComponentBox>
     </ModalComponent>,
     modalHtml
