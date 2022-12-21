@@ -9,10 +9,16 @@ import {
 } from "../styles/footer_styles";
 
 export default function Footer() {
+  const handleClick = () => {
+    console.log("Abrir y cerrar");
+  };
   return (
     <FooterComponent role="footer">
       <FooterComponentCenter>
-        <FooterComponentCenterSetting aria-label="open modal">
+        <FooterComponentCenterSetting
+          aria-label="open modal"
+          onClick={handleClick}
+        >
           <FooterComponentCenterSettingImage src={options} />
         </FooterComponentCenterSetting>
       </FooterComponentCenter>

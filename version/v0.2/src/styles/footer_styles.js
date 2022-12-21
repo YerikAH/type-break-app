@@ -19,7 +19,9 @@ export const FooterComponentCenterSetting = styled.button`
   align-items: center;
   padding: 1rem;
   border-radius: 100rem;
-    outline: none;
-    border: none;
+  outline: none;
+  border: none;
+  z-index: 500;
+  position: relative;
 `;
 export const FooterComponentCenterSettingImage = styled.img``;
