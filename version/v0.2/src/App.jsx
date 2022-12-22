@@ -23,7 +23,7 @@ function App() {
   const [viewLoader, setViewLoader] = useState(false);
 
   async function getDataWord() {
-    let url = "./src/data/easyEsp.json";
+    let url = "data.json";
     try {
       setViewLoader(true);
       let res = await fetch(url);

@@ -8,4 +8,3 @@ export const SEVEN_LETTER = "wordSevenLetters";
 export const EIGHT_LETTER = "wordEightLetters";
 export const NINE_LETTER = "wordNineLetters";
 export const TEN_LETTER = "wordTenLetters";
-export const INPUT_HARD = "true";

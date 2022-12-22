@@ -10,11 +10,7 @@ import {
   MainSectionWordWriteCenter,
   VoidDiv,
 } from "../styles/main_styles";
-import {
-  COLOR_BAD_WORD,
-  COLOR_GOOD_WORD,
-  INPUT_HARD,
-} from "../variables/variables";
+import { COLOR_BAD_WORD, COLOR_GOOD_WORD } from "../variables/variables";
 import ButtonStartTestComponent from "./ButtonStartTestComponent.jsx";
 import EndTestComponent from "./EndTestComponent";
 
@@ -33,6 +29,8 @@ export default function MainContent({
   const [errorStyle, setErrorStyle] = useState({});
   const [corretWord, setCorretWord] = useState(0);
   const [incorretWord, setIncorretWord] = useState(0);
+  const [autofocusTrue, setAutofocusTrue] = useState(true);
+
   const handleChange = (e) => {
     const textWrite = e.target.value;
     const wordMoreSpace = `${word[0]} `;
@@ -92,7 +90,7 @@ export default function MainContent({
                     style={errorStyle}
                     value={wordWrite}
                     onChange={handleChange}
-                    autoFocus={INPUT_HARD}
+                    autoFocus={autofocusTrue}
                   />
                 </MainSectionWordWriteCenter>
               </MainSectionWordWrite>
