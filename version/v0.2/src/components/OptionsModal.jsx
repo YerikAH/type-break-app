@@ -9,8 +9,17 @@ import {
   ModalComponent,
   ModalComponentBox,
   ErrorModal,
-  ModalBoxButtonText,
 } from "../styles/options_modal";
+import {
+  EIGHT_LETTER,
+  FIVE_LETTER,
+  FOUR_LETTER,
+  NINE_LETTER,
+  SEVEN_LETTER,
+  SIX_LETTER,
+  TEN_LETTER,
+  THREE_LETTER,
+} from "../variables/variables";
 import Loader from "./Loader";
 import ReactDOM from "react-dom";
 import { useState } from "react";
@@ -24,7 +33,6 @@ export default function OptionsModal({
   const [timeCustomInput, setTimeCustomInput] = useState("");
   const [timeCustomInputError, setTimeCustomInputError] = useState(false);
   const handleClickChange = (e) => {
-    console.log(e.target.value);
     setChangeLetters(e.target.value);
   };
   const handleTimer = (e) => {
@@ -63,42 +71,42 @@ export default function OptionsModal({
         <ModalBoxButtonBox>
           <ModalBoxButton
             className="'3'"
-            value="wordThreeLetters"
+            value={THREE_LETTER}
             onClick={handleClickChange}
           ></ModalBoxButton>
           <ModalBoxButton
             className="'4'"
-            value="wordFourLetters"
+            value={FOUR_LETTER}
             onClick={handleClickChange}
           ></ModalBoxButton>
           <ModalBoxButton
             className="'5'"
-            value="wordFiveLetters"
+            value={FIVE_LETTER}
             onClick={handleClickChange}
           ></ModalBoxButton>
           <ModalBoxButton
             className="'6'"
-            value="wordSixLetters"
+            value={SIX_LETTER}
             onClick={handleClickChange}
           ></ModalBoxButton>
           <ModalBoxButton
             className="'7'"
-            value="wordSevenLetters"
+            value={SEVEN_LETTER}
             onClick={handleClickChange}
           ></ModalBoxButton>
           <ModalBoxButton
             className="'8'"
-            value="wordEightLetters"
+            value={EIGHT_LETTER}
             onClick={handleClickChange}
           ></ModalBoxButton>
           <ModalBoxButton
             className="'9'"
-            value="wordNineLetters"
+            value={NINE_LETTER}
             onClick={handleClickChange}
           ></ModalBoxButton>
           <ModalBoxButton
             className="'10'"
-            value="wordTenLetters"
+            value={TEN_LETTER}
             onClick={handleClickChange}
           ></ModalBoxButton>
         </ModalBoxButtonBox>

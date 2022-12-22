@@ -57,12 +57,10 @@ export default function Footer({
             )}
           </>
         )}
-        {!testEnd ? (
+        {!testEnd && (
           <ButtonComeBack onClick={handleBackClick}>
             <FooterComponentCenterSettingImage src={backIcon} />
           </ButtonComeBack>
-        ) : (
-          <></>
         )}
       </FooterComponentCenter>
     </FooterComponent>

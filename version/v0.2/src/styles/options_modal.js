@@ -31,7 +31,6 @@ export const ModalBoxText = styled.p`
 `;
 export const ModalBoxButtonBox = styled.div`
   display: grid;
-  /* grid-template-columns: repeat(auto-fill, 35.5px); */
   gap: 1rem;
   justify-content: center;
   margin: 1rem 0;

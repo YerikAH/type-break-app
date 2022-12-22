@@ -1,6 +1,6 @@
 import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { calcWpm } from "../helpers/calcWpm";
 import {
   EndTestBox,
   EndTestBoxResultText,
@@ -15,17 +15,6 @@ export default function EndTestComponent({
   testEnd,
 }) {
   const [wpmTotal, setWpmTotal] = useState("");
-  function calcWpm(badWord, goodWord, time) {
-    let wordTotal = goodWord - badWord;
-
-    const result = parseFloat(wordTotal / (time / 60)).toFixed(2);
-
-    if (result < 0) {
-      return 0;
-    } else {
-      return result;
-    }
-  }
   useEffect(() => {
     let resultWpm = calcWpm(incorretWord, corretWord, timer);
     setWpmTotal(resultWpm);

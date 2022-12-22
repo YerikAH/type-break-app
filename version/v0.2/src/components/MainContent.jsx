@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   MainComponentStyles,
   MainSectinWordInput,
@@ -11,6 +10,11 @@ import {
   MainSectionWordWriteCenter,
   VoidDiv,
 } from "../styles/main_styles";
+import {
+  COLOR_BAD_WORD,
+  COLOR_GOOD_WORD,
+  INPUT_HARD,
+} from "../variables/variables";
 import ButtonStartTestComponent from "./ButtonStartTestComponent.jsx";
 import EndTestComponent from "./EndTestComponent";
 
@@ -32,19 +36,18 @@ export default function MainContent({
   const handleChange = (e) => {
     const textWrite = e.target.value;
     const wordMoreSpace = `${word[0]} `;
+    let colorError = {
+      color: "var(--color-good)",
+    };
+
     setWordWrite(textWrite);
     if (textWrite.slice(-1) === " " && textWrite.length > word[0].length) {
       const deleteSpace = textWrite.slice(0, textWrite.length - 1);
       if (deleteSpace === word[0]) {
-        const deleteFirstElement = word.slice(1, word.length);
-        setWordWrite("");
-        setWord(deleteFirstElement);
+        verifyWord();
         setCorretWord(corretWord + 1);
       } else {
-        console.log("Error");
-        const deleteFirstElement = word.slice(1, word.length);
-        setWordWrite("");
-        setWord(deleteFirstElement);
+        verifyWord();
         setIncorretWord(incorretWord + 1);
       }
     }
@@ -53,17 +56,20 @@ export default function MainContent({
       textWrite === word[0].slice(0, textWrite.length) ||
       textWrite === wordMoreSpace
     ) {
-      const colorError = {
-        color: "var(--color-good)",
-      };
+      colorError.color = COLOR_GOOD_WORD;
       setErrorStyle(colorError);
     } else {
-      const colorError = {
-        color: "var(--color-bad)",
-      };
+      colorError.color = COLOR_BAD_WORD;
       setErrorStyle(colorError);
     }
   };
+
+  function verifyWord() {
+    const deleteFirstElement = word.slice(1, word.length);
+    setWordWrite("");
+    setWord(deleteFirstElement);
+  }
+
   useEffect(() => {
     if (testEnd) {
       setCorretWord(0);
@@ -86,7 +92,7 @@ export default function MainContent({
                     style={errorStyle}
                     value={wordWrite}
                     onChange={handleChange}
-                    autoFocus="true"
+                    autoFocus={INPUT_HARD}
                   />
                 </MainSectionWordWriteCenter>
               </MainSectionWordWrite>
