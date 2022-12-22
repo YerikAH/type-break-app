@@ -49,14 +49,30 @@ export const ModalBoxButton = styled.button`
   padding: 0.5rem;
   border-radius: 0.5rem;
   position: relative;
+  color: var(--color-text-input);
+  font-weight: 800;
+  &::after {
+    content: ${(props) => props.className};
+    position: absolute;
+    left: 0.5rem;
+    top: 0.3rem;
+  }
+  transition: 0.3s;
+  &:hover {
+    color: var(--color-text);
+  }
+  &:hover::after {
+    left: 0.8rem;
+    top: 0.6rem;
+  }
 `;
 export const ModalBoxButtonText = styled.span`
   color: var(--color-text-input);
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0.3rem;
+  left: 0.5rem;
+  height: 0;
   font-weight: 800;
-  margin: 0.3rem 0.5rem;
 `;
 export const ModalBoxButtonSecond = styled.button`
   border: none;
@@ -64,6 +80,10 @@ export const ModalBoxButtonSecond = styled.button`
   outline: none;
   color: var(--color-text-input);
   font-weight: 800;
+  transition: 0.3s;
+  &:hover {
+    color: var(--color-text);
+  }
 `;
 export const ModalBoxInput = styled.input`
   background-color: var(--color-input);

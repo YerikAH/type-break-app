@@ -18,6 +18,10 @@ export const MainButtonStartTest = styled.button`
   justify-content: center;
   align-items: center;
   color: var(--color-text);
+  transition: 0.3s;
+  &:hover {
+    background: var(--color-input);
+  }
 `;
 export const MainButtonStartTestIcon = styled.img`
   margin-right: 0.3rem;

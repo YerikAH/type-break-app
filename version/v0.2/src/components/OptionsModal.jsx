@@ -11,6 +11,7 @@ import {
   ErrorModal,
   ModalBoxButtonText,
 } from "../styles/options_modal";
+import Loader from "./Loader";
 import ReactDOM from "react-dom";
 import { useState } from "react";
 const modalHtml = document.getElementById("modal");
@@ -18,10 +19,12 @@ export default function OptionsModal({
   setChangeLetters,
   setTimer,
   setTimerUi,
+  viewLoader,
 }) {
   const [timeCustomInput, setTimeCustomInput] = useState("");
   const [timeCustomInputError, setTimeCustomInputError] = useState(false);
   const handleClickChange = (e) => {
+    console.log(e.target.value);
     setChangeLetters(e.target.value);
   };
   const handleTimer = (e) => {
@@ -52,35 +55,52 @@ export default function OptionsModal({
     <ModalComponent>
       <ModalComponentBox>
         <ModalBoxTitle>words per letter</ModalBoxTitle>
+
         <ModalBoxText>
           (If you press button 3 the test will only be for words that have 3
           letters.)
         </ModalBoxText>
         <ModalBoxButtonBox>
-          <ModalBoxButton value="wordThreeLetters" onClick={handleClickChange}>
-            <ModalBoxButtonText>3</ModalBoxButtonText>
-          </ModalBoxButton>
-          <ModalBoxButton value="wordFourLetters" onClick={handleClickChange}>
-            <ModalBoxButtonText>4</ModalBoxButtonText>
-          </ModalBoxButton>
-          <ModalBoxButton value="wordFiveLetters" onClick={handleClickChange}>
-            <ModalBoxButtonText>5</ModalBoxButtonText>
-          </ModalBoxButton>
-          <ModalBoxButton value="wordSixLetters" onClick={handleClickChange}>
-            <ModalBoxButtonText>6</ModalBoxButtonText>
-          </ModalBoxButton>
-          <ModalBoxButton value="wordSevenLetters" onClick={handleClickChange}>
-            <ModalBoxButtonText>7</ModalBoxButtonText>
-          </ModalBoxButton>
-          <ModalBoxButton value="wordEightLetters" onClick={handleClickChange}>
-            <ModalBoxButtonText>8</ModalBoxButtonText>
-          </ModalBoxButton>
-          <ModalBoxButton value="wordNineLetters" onClick={handleClickChange}>
-            <ModalBoxButtonText>9</ModalBoxButtonText>
-          </ModalBoxButton>
-          <ModalBoxButton value="wordTenLetters" onClick={handleClickChange}>
-            <ModalBoxButtonText>10</ModalBoxButtonText>
-          </ModalBoxButton>
+          <ModalBoxButton
+            className="'3'"
+            value="wordThreeLetters"
+            onClick={handleClickChange}
+          ></ModalBoxButton>
+          <ModalBoxButton
+            className="'4'"
+            value="wordFourLetters"
+            onClick={handleClickChange}
+          ></ModalBoxButton>
+          <ModalBoxButton
+            className="'5'"
+            value="wordFiveLetters"
+            onClick={handleClickChange}
+          ></ModalBoxButton>
+          <ModalBoxButton
+            className="'6'"
+            value="wordSixLetters"
+            onClick={handleClickChange}
+          ></ModalBoxButton>
+          <ModalBoxButton
+            className="'7'"
+            value="wordSevenLetters"
+            onClick={handleClickChange}
+          ></ModalBoxButton>
+          <ModalBoxButton
+            className="'8'"
+            value="wordEightLetters"
+            onClick={handleClickChange}
+          ></ModalBoxButton>
+          <ModalBoxButton
+            className="'9'"
+            value="wordNineLetters"
+            onClick={handleClickChange}
+          ></ModalBoxButton>
+          <ModalBoxButton
+            className="'10'"
+            value="wordTenLetters"
+            onClick={handleClickChange}
+          ></ModalBoxButton>
         </ModalBoxButtonBox>
         <ModalBoxTitle>test time</ModalBoxTitle>
         <ModalBoxText>
@@ -104,6 +124,7 @@ export default function OptionsModal({
             onChange={handleChangeVerifyTimer}
           />
         </ModalBoxButtonBox>
+        {viewLoader && <Loader></Loader>}
         {timeCustomInputError && (
           <ErrorModal>
             There is an error in the input, the default value of 30 seconds.

@@ -86,6 +86,7 @@ export default function MainContent({
                     style={errorStyle}
                     value={wordWrite}
                     onChange={handleChange}
+                    autoFocus="true"
                   />
                 </MainSectionWordWriteCenter>
               </MainSectionWordWrite>

@@ -15,14 +15,19 @@ export const FooterComponentCenter = styled.div`
 `;
 export const FooterComponentCenterSetting = styled.button`
   background: transparent;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
   border-radius: 100rem;
   outline: none;
   border: none;
   z-index: 500;
   position: relative;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+  &:hover {
+    background-color: var(--bg-modal);
+  }
 `;
 export const FooterComponentCenterSettingImage = styled.img``;
 export const ButtonComeBack = styled.button`

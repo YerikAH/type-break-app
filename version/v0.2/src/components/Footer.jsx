@@ -17,6 +17,7 @@ export default function Footer({
   testEnd,
   setTestEnd,
   setStartTest,
+  viewLoader,
 }) {
   const handleClick = () => {
     setModal(!modal);
@@ -30,16 +31,30 @@ export default function Footer({
       <FooterComponentCenter>
         {!startTest && (
           <>
-            <FooterComponentCenterSetting
-              aria-label="open modal"
-              onClick={handleClick}
-            >
-              {modal ? (
-                <FooterComponentCenterSettingImage src={optionsExit} />
-              ) : (
-                <FooterComponentCenterSettingImage src={options} />
-              )}
-            </FooterComponentCenterSetting>
+            {viewLoader ? (
+              <>
+                <FooterComponentCenterSetting aria-label="errors">
+                  {modal ? (
+                    <FooterComponentCenterSettingImage src={optionsExit} />
+                  ) : (
+                    <FooterComponentCenterSettingImage src={options} />
+                  )}
+                </FooterComponentCenterSetting>
+              </>
+            ) : (
+              <>
+                <FooterComponentCenterSetting
+                  aria-label="open modal and close modal"
+                  onClick={handleClick}
+                >
+                  {modal ? (
+                    <FooterComponentCenterSettingImage src={optionsExit} />
+                  ) : (
+                    <FooterComponentCenterSettingImage src={options} />
+                  )}
+                </FooterComponentCenterSetting>
+              </>
+            )}
           </>
         )}
         {!testEnd ? (

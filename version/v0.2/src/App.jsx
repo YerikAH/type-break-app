@@ -19,11 +19,16 @@ function App() {
   const [timer, setTimer] = useState(30);
   const [timerUi, setTimerUi] = useState(30);
 
+  /* Loader */
+  const [viewLoader, setViewLoader] = useState(false);
+
   async function getDataWord() {
     let url = "./src/data/easyEsp.json";
     try {
+      setViewLoader(true);
       let res = await fetch(url);
       let json = await res.json();
+
       if (!res.ok) {
         throw {
           resStatus: res.status,
@@ -41,6 +46,7 @@ function App() {
         saveJsonWord.push(getContentJsonWork);
       }
       setWord(saveJsonWord);
+      setViewLoader(false);
     } catch (err) {
       console.log(err);
     }
@@ -70,9 +76,11 @@ function App() {
         testEnd={testEnd}
         setTestEnd={setTestEnd}
         setStartTest={setStartTest}
+        viewLoader={viewLoader}
       ></Footer>
       {modal && (
         <OptionsModal
+          viewLoader={viewLoader}
           setChangeLetters={setChangeLetters}
           setTimer={setTimer}
           setTimerUi={setTimerUi}
