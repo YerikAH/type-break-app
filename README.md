@@ -1,2 +1,10 @@
 # type-break-app
-A typing application can help you a lot, if you want to type faster on the keyboard, you can change the text or enter texts simply by changing a JSON. It also has some themes to customize.
+A typing game, that includes +8000 words in Spanish, you can practice according to how many letters you want, also you can customize the time, The design is simple and easy to use.<br/>
+**Note:** It was developed in React, however, I lost the development code, I was only able to recover the production code. But you can see the previous commits. 
+
+## Technologies used in the project 🛠
+- React
+- styled-components
+- JavaScript
+## Demo
+https://yerikah.github.io/type-break-app/
